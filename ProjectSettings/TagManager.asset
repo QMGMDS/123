@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - Monster
+  - CameraBounds
+  - NPC
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 2718158819
+    locked: 0
+  - name: Wall
+    uniqueID: 3414440419
+    locked: 0
+  - name: UI
+    uniqueID: 2870343711
+    locked: 0
+  - name: NPC
+    uniqueID: 2051831521
+    locked: 0
+  - name: Monster
+    uniqueID: 483022751
+    locked: 0
+  - name: Decorations_back
+    uniqueID: 810197789
+    locked: 0
+  - name: Player
+    uniqueID: 4214404061
+    locked: 0
+  - name: Decorations_front
+    uniqueID: 658558627
+    locked: 0
