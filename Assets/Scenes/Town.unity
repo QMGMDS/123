@@ -1175,8 +1175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3ce367e9b73fb48b1f7951959457c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneloadEventSO: {fileID: 11400000, guid: 9edb59bf1fe9e464aa2ab89c650c1968, type: 2}
   sceneToGo: {fileID: 11400000, guid: 60c8965a052def544839bbad05437163, type: 2}
+  SceneloadEventSO: {fileID: 11400000, guid: 9edb59bf1fe9e464aa2ab89c650c1968, type: 2}
+  cameraImpulse: {fileID: 11400000, guid: 7f7e9609e337ab64cb3f1d86d27468f0, type: 2}
 --- !u!114 &748297255
 MonoBehaviour:
   m_ObjectHideFlags: 0
