@@ -395,7 +395,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstLoadScene: {fileID: 11400000, guid: ba622581dd8f838469e198c4eb518a77, type: 2}
   currentLoadScene: {fileID: 0}
+  lastLoadScene: {fileID: 0}
+  fadeDuration: 0.5
   sceneLoadEventSO: {fileID: 11400000, guid: 9edb59bf1fe9e464aa2ab89c650c1968, type: 2}
+  fadeEvent: {fileID: 11400000, guid: 8c111f14f439b2c46badc7a5b3a90d06, type: 2}
 --- !u!4 &728850963
 Transform:
   m_ObjectHideFlags: 0

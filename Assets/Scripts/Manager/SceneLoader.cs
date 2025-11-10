@@ -10,8 +10,15 @@ public class SceneLoader : MonoBehaviour
     public GameSceneSO currentLoadScene;
     public GameSceneSO lastLoadScene; //保存上一个被加载的场景
 
+    public float fadeDuration; //淡入淡出时长
+
+    private bool isReturn; //是否复原先前场景
+
     [Header("事件监听")]
     public SceneloadEventSO sceneLoadEventSO;
+
+    [Header("广播")]
+    public FadeEventSO fadeEvent;
 
     //接收
     private GameSceneSO sceneToLoad;
@@ -41,16 +48,17 @@ public class SceneLoader : MonoBehaviour
             this.sceneToLoad = sceneToLoad;
             this.fadeScreen = fadeScreen;
 
+            isReturn = false;
             lastLoadScene = currentLoadScene;
             StartCoroutine(UnLoadCurrentScene());
-            LoadNewScene();
         }
         else //传入空的场景,表明要退回先前的场景lastLoadScene
         {
+            isReturn = true;
+
             Debug.Log("空空");
             this.fadeScreen = fadeScreen;
             StartCoroutine(UnLoadCurrentScene());
-            LoadLastScene();
         }
     }
 
@@ -60,16 +68,30 @@ public class SceneLoader : MonoBehaviour
     {
         if (fadeScreen)
         {
-            //渐入渐出效果
+            //变黑实现卸载场景
+            fadeEvent.FadeIn(fadeDuration);
         }
+        yield return new WaitForSeconds(fadeDuration); //等待场景彻底变黑，再去卸载场景
         yield return currentLoadScene.sceneReference.UnLoadScene();
         Debug.Log("卸载了");
+        if (isReturn)
+        {
+            LoadLastScene();
+        }
+        else
+        {
+            LoadNewScene();
+        }
     }
     #endregion
 
     #region 加载新场景
     private void LoadNewScene()
     {
+        if (fadeScreen)
+        {
+            fadeEvent.FadeOut(fadeDuration);
+        }
         currentLoadScene = sceneToLoad;
         currentLoadScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive);
     }
@@ -78,6 +100,10 @@ public class SceneLoader : MonoBehaviour
     #region 加载历史场景
     private void LoadLastScene()
     {
+        if (fadeScreen)
+        {
+            fadeEvent.FadeOut(fadeDuration);
+        }
         currentLoadScene = lastLoadScene;
         lastLoadScene = sceneToLoad;
         currentLoadScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive);
