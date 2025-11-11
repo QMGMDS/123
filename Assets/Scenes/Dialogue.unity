@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ca1c1f3061fe040b739480b7b63e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueEventSO: {fileID: 11400000, guid: 31811d0eccb15ff4385b2767b2479780, type: 2}
+  dialogueEventSO: {fileID: 11400000, guid: d95484311577fec4ab3852ab62d15039, type: 2}
   contentDisplaybox: {fileID: 401907137}
   dialugueSO: {fileID: 11400000, guid: 1a1631b44355a6c4d8c85fee1deba5bf, type: 2}
   dialugueOrder: 0

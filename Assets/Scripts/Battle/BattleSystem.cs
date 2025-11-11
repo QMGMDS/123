@@ -85,7 +85,7 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("怪物胜利");
         }
 
-        PlayerController.Instance.battle = false;
+        PlayerStatusManager.instance.isBattle = false;
         SceneloadEventSO.RaiseLoadRequestEvent(null, true); //回到进入战斗之前的场景
     }
     #endregion

@@ -1,24 +1,50 @@
-﻿using UnityEngine;
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 //这是挂载在NPC的子物体Enter Dialogue身上的脚本
-//作用:向Dialogue Manager提交要加载的对话场景
-public class TriggerDialogue : MonoBehaviour
+//作用:识别是否按下E键进行交互，向Dialogue Manager提交要加载的对话场景
+public class TriggerDialogue : MonoBehaviour,IInteractable
 {
+    public DialogueSceneSO dialogueToLoad; //要加载的对话场景
+    [Header("广播")]
     public DialogueEventSO dialogueEventSO;
-    public GameSceneSO dialogueToGo; //要加载的对话场景
+    private PlayerInputControl playerControl;
 
-    private void Update()
+    void Awake()
     {
-        DialogueTrigger();
+        playerControl = new PlayerInputControl();
+        playerControl.Enable();
+    }
+
+    void OnEnable()
+    {
+        playerControl.GamePlay.Confirm.started += EButtonPress;
+    }
+
+    void OnDisable()
+    {
+        playerControl.GamePlay.Confirm.started -= EButtonPress;
+
+        playerControl.Disable();
     }
 
 
-    private void DialogueTrigger()
+
+    private void EButtonPress(InputAction.CallbackContext context)
     {
-        if (PlayerController.Instance.dialogue && PlayerController.Instance.interaction)
+        if (PlayerStatusManager.instance.canInteract)
         {
-            dialogueEventSO.RaiseDialogueEvent(dialogueToGo, true); //呼叫:加载对话场景
-            PlayerController.Instance.interaction = false; //关闭人物可交互状态
+            TriggerInteraction();
         }
+    }
+
+    public void TriggerInteraction()
+    {
+        Debug.Log("进入对话!!!");
+        PlayerStatusManager.instance.canInteract = false;
+        PlayerStatusManager.instance.isDialogue = true;
+        playerControl.Disable();
+        dialogueEventSO.RaiseDialogueEvent(dialogueToLoad, true);
     }
 }

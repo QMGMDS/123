@@ -1,22 +1,17 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.LowLevel.InputEventTrace;
 
 public class PlayerAnimations : MonoBehaviour
 {
-	#region 组件获取
-	PlayerController playerController;
-    Animator anim;
-    #endregion
+	private PlayerController playerController;
+    private Animator anim;
 
     private void Awake()
     {
-        #region 组件获取
         playerController = GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
-        #endregion
-
     }
 
     private void Update()

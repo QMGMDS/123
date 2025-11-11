@@ -18,12 +18,12 @@ public class Transmit : MonoBehaviour
 
     private IEnumerator BattleStart()
     {
-        if (!PlayerController.Instance.battle)
+        if (!PlayerStatusManager.instance.isBattle)
         {
-            PlayerController.Instance.battle = true; //人物进入战斗状态
+            PlayerStatusManager.instance.isBattle = true; //人物进入战斗状态
             cameraImpulse.RaiseEvent(); //摄像机震动
-            yield return new WaitForSeconds(0.4f);
-            SceneloadEventSO.RaiseLoadRequestEvent(sceneToGo, true); //切换战斗场景
+            yield return new WaitForSeconds(0.2f);
+            SceneloadEventSO.RaiseLoadRequestEvent(sceneToGo, false); //切换战斗场景
             Debug.Log("战斗开始!");
         }
     }

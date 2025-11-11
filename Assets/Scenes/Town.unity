@@ -1097,7 +1097,7 @@ GameObject:
   - component: {fileID: 748297254}
   - component: {fileID: 748297255}
   m_Layer: 0
-  m_Name: Enter Battle
+  m_Name: Enter Battle Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112708,6 +112708,83 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8452015, y: 2.6405745}
   m_EdgeRadius: 0
+--- !u!1 &1318137496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1318137498}
+  - component: {fileID: 1318137497}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Businessman
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1318137497
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318137496}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.29509878, y: -0.29509735}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.952123, y: 2.7705917}
+  m_EdgeRadius: 0
+--- !u!4 &1318137498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318137496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.8, y: 40.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353503783
 GameObject:
   m_ObjectHideFlags: 0
@@ -113194,8 +113271,8 @@ GameObject:
   - component: {fileID: 1876279103}
   - component: {fileID: 1876279104}
   m_Layer: 8
-  m_Name: Enter Dialogue
-  m_TagString: Untagged
+  m_Name: Enter Dialogue Trigger
+  m_TagString: Interactable NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113272,8 +113349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734dadff890ef2948be06bae065ec1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueEventSO: {fileID: 11400000, guid: 31811d0eccb15ff4385b2767b2479780, type: 2}
-  dialogueToGo: {fileID: 11400000, guid: 64b5cfc8e855512418ddda3460b8bf94, type: 2}
+  dialogueEventSO: {fileID: 11400000, guid: d95484311577fec4ab3852ab62d15039, type: 2}
+  dialogueToLoad: {fileID: 11400000, guid: ca3adcf959953574b8231c5a8ea8d3a0, type: 2}
 --- !u!213 &2002466438
 Sprite:
   m_ObjectHideFlags: 0
@@ -113538,3 +113615,4 @@ SceneRoots:
   - {fileID: 1527874746}
   - {fileID: 412703285}
   - {fileID: 547537527}
+  - {fileID: 1318137498}

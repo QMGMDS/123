@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //挂载在物体Battle System上的脚本
-//掌管回合制战斗界面的动画
+//掌管回合制战斗界面的动画逻辑
 public class BattleInterfaceAnimation : MonoBehaviour
 {
 	public GameObject attacking;

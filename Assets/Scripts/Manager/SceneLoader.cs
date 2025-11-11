@@ -63,17 +63,19 @@ public class SceneLoader : MonoBehaviour
     }
 
 
-    #region 卸载当前场景
+    #region 场景加载
     private IEnumerator UnLoadCurrentScene()
     {
         if (fadeScreen)
         {
             //变黑实现卸载场景
             fadeEvent.FadeIn(fadeDuration);
+            yield return new WaitForSeconds(fadeDuration); //等待场景彻底变黑，再去卸载场景
         }
-        yield return new WaitForSeconds(fadeDuration); //等待场景彻底变黑，再去卸载场景
-        yield return currentLoadScene.sceneReference.UnLoadScene();
+
+        currentLoadScene.sceneReference.UnLoadScene();
         Debug.Log("卸载了");
+
         if (isReturn)
         {
             LoadLastScene();

@@ -6,29 +6,32 @@ using UnityEngine.InputSystem;
 //作用:控制对话的进行
 public class DialogueSystem : MonoBehaviour
 {
+    private PlayerInputControl playerControl;
+    public TextMeshProUGUI contentDisplaybox; //对话显示处
+    public DialugueSO dialugueSO; //对话内容
+    public int dialugueOrder; //当前进行到对话几
+    [Header("广播")]
     public DialogueEventSO dialogueEventSO; //用于结束对话,关闭对话框
 
 
-    public TextMeshProUGUI contentDisplaybox; //对话显示处
-    public DialugueSO dialugueSO; //对话内容
-
-    public int dialugueOrder; //当前进行到对话几
 
     //对话系统一旦被触发,关闭原来人物控制的系统，进入对话模式操作
     private void Awake()
     {
-        PlayerController.Instance.inputControl.GamePlay.Disable();
         DisplayContentOnce();
+        playerControl = new PlayerInputControl();
     }
 
     private void OnEnable()
     {
-        PlayerController.Instance.inputControl.UI.Confirm.started += Confirm;
+        playerControl.UI.Enable();
+        playerControl.UI.Confirm.started += Confirm;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
-        PlayerController.Instance.inputControl.UI.Confirm.started -= Confirm;
+        playerControl.UI.Disable();
+        playerControl.UI.Confirm.started -= Confirm;
     }
 
     private void Confirm(InputAction.CallbackContext context) //按下E键确认,切换下一个对话
@@ -42,9 +45,8 @@ public class DialogueSystem : MonoBehaviour
         {
             Debug.Log("对话结束,结束对话框");
             dialugueOrder = 0; //重置对话
-            PlayerController.Instance.dialogue = false; //退出对话状态
+            PlayerStatusManager.instance.isDialogue = false; //退出对话状态
             dialogueEventSO.RaiseDialogueEvent(null, true); //关闭对话场景
-            PlayerController.Instance.inputControl.GamePlay.Enable(); //开启GamePlay控制模式
         }
     }
 

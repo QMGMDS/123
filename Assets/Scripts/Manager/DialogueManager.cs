@@ -2,10 +2,10 @@
 using UnityEngine.SceneManagement;
 
 //挂载在Dialogue Manager身上的脚本
-//作用:将监听到的对话场景加载出来
+//作用:控制对话场景的加载和卸载
 public class DialogueManager : MonoBehaviour
 {
-    public GameSceneSO currentDialogue; //显示当前加载的对话场景
+    public DialogueSceneSO currentDialogue; //显示当前加载的对话场景
 
     private bool fadeScreen;
 
@@ -16,15 +16,15 @@ public class DialogueManager : MonoBehaviour
 
     private void OnEnable()
     {
-        dialogueEventSO.LoadDialogue += loadDialogue;
+        dialogueEventSO.LoadDialogue += LoadDialogue;
     }
 
     private void OnDisable()
     {
-        dialogueEventSO.LoadDialogue -= loadDialogue;
+        dialogueEventSO.LoadDialogue -= LoadDialogue;
     }
 
-    private void loadDialogue(GameSceneSO dialogueToLoad, bool fadeScreen)  //事件监听
+    private void LoadDialogue(DialogueSceneSO dialogueToLoad, bool fadeScreen)  //事件监听
     {
         if (dialogueToLoad != null)
         {
@@ -43,12 +43,12 @@ public class DialogueManager : MonoBehaviour
     //加载对话场景
     private void LoadNewDialogue()
     {
-        currentDialogue.sceneReference.LoadSceneAsync(LoadSceneMode.Additive);
+        currentDialogue.DialogueSceneReference.LoadSceneAsync(LoadSceneMode.Additive);
     }
 
     //卸载当前对话场景
     private void DeleteCurrentDialogue()
     {
-        currentDialogue.sceneReference.UnLoadScene();
+        currentDialogue.DialogueSceneReference.UnLoadScene();
     }
 }

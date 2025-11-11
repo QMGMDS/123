@@ -1,29 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.EventSystems;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class ButtonHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ButtonHighlight : MonoBehaviour
 {
-    public GameObject attackHighlight;
-    public GameObject skillHighlight;
-    public GameObject defenseHighlight;
-    public GameObject itemHighlight;
-    public GameObject escapeHighlight;
-
-    #region 鼠标的移入移出
-    //实现条件:
-    //1.using UnityEngine.EventSystems 调用
-    //2.IPointerEnterHandler, IPointerExitHandler 接口的实现
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        //Debug.Log("鼠标进入了！");
-        //attackHighlight.SetActive(true);
-
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        //attackHighlight.SetActive(false);
-    }
-    #endregion
-
+    
 }
